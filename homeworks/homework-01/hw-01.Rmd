@@ -1,6 +1,6 @@
 ---
 title: "STA 310: Homework 1"
-author: 
+author: Matías Pinto
 output: 
      pdf_document
 font-size: 8px
@@ -33,9 +33,21 @@ Consider the following scenario:
 
 a.  Identify the response and predictor variable.
 
+Response variable: Number of chirps per minute
+Predictor variable: Temperature.
+
 b.  Write the complete specification of the statistical model.
 
+$$
+\text{Chirps}_i = \beta_0 + \beta_1 \times \text{temperature}_i + \epsilon
+$$
+
 c.  Write the assumptions for linear regression in the context of the problem.
+
+1. Linearity: The mean of the number of chirps per minute has a linear relationship with the mean temperature.
+2. Independence: The number of chirps recorded for one specific time period does not depend on the number of chirps recorded for another time period.
+3. Normality: The number of chirps per minute follows a normal distribution at each level of temperature.
+4. Equal variance: Variance of the number of chirps per minute is the same at all temperatures. 
 
 ## Exercise 2
 
