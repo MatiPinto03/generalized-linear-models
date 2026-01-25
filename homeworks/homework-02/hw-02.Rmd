@@ -22,6 +22,16 @@ These exercises come from BMLR or are adapted from BMLR, Chapter 3.
 
 At what value of $p$ is the variance of a binary random variable smallest? When is the variance the largest? Back up your answer empirically or mathematically. 
 
+Recall that the variance of a binary random variable $X \sim \text{Bernoulli}(p)$ is $p(1-p)$. To get the maximum and minimum, let's calculate the derivative of the variance with respect to $p$ and set it to 0:
+
+$$
+\frac{d}{dp} p(1-p) = 0 \Rightarrow  1 - 2p = 0 \Rightarrow p =0.5
+$$
+Note that when $p=0.5$, $Var(X) = 0.25$, which is clearly the maximum. Additionally, since $p\in(0, 1)$, then $p(1-p) \leq 0$, which means that the minimum possible for the variation is 0, what can be obtained when $p=0 \lor p=1$.
+
+Therefore, the variance is the largest ($Var(X) = 0.25$) when $p = 0.25$, and the variance is the smallest ($Var(X) = 0$) when $p = 0 \lor p =1$.
+
+
 ## Exercise 2 
 
 How are hypergeometric and binomial random variables different? How are they similar?
