@@ -111,18 +111,71 @@ Since we are looking to count the number of mating in a specific time interval (
 
 Describe a scenario which could be modeled using a gamma distribution.
 
+Suppose that passengers at RDU airport are randomly selected at TSA for extra screening over time (like me!). If we assume that those selections happen at an approximate constant rate, we might be able to get the total time since the airport opening in the morning until 10 passengers have been selected for extra screening. Since the waiting time can be represented with exponential distribution, then the total time can be modelled with Gamma distribution.
+
 ## Exercise 10
 
 __Beta-binomial distribution.__ We can generate more distributions by mixing two random variables. \index{mixture model} Beta-binomial random variables are binomial random variables with fixed $n$ whose parameter $p$ follows a beta distribution with fixed parameters $\alpha, \beta$. In more detail, we would first draw $p_1$ from our beta distribution, and then generate our first observation $y_1$, a random number of successes from a binomial ($n, p_1$) distribution. Then, we would generate a new $p_2$ from our beta distribution, and use a binomial distribution with parameters $n, p_2$ to generate our second observation $y_2$. We would continue this process until desired.
 
 Note that all of the observations $y_i$ will be integer values from $0, 1, \ldots, n$.  With this in mind, use `rbinom()` to simulate 1,000 observations from a plain old vanilla binomial random variable with $n=10$ and $p=0.8$. Plot a histogram of these binomial observations. Then, do the following to generate a beta-binomial distribution:
 
+```{r 10-part1}
+set.seed(310) #reproducibility
+
+binom = rbinom(1000, 10, 0.8)
+hist(binom, 
+     main = "Binomial distribution",
+     xlab = "Number of successes",
+     col = "red")
+```
+
+
 a. Draw $p_i$ from the beta distribution with $\alpha=4$ and $\beta=1$.
+
+```{r 10-a}
+p_i <- rbeta(1000, shape1 = 4, shape2 = 1)
+```
+
 b. Generate an observation $y_i$ from a binomial distribution with $n=10$ and $p = p_i$.
+
+```{r}
+y_i <- rbinom(1000, 10, p_i)
+```
+
 c. Repeat (a) and (b) 1,000 times ($i=1,\ldots,1000$).
+
+Already did this by using $n=1,000$ on each `rbinom`, `rbeta` function calls.
+
 d. Plot a histogram of these beta-binomial observations.  
+
+```{r}
+hist(y_i, 
+     main = "Beta-Binomial distribution",
+     xlab = "Number of successes",
+     col = "blue")
+```
+
     
 Compare the histograms of the "plain old" binomial and beta-binomial distributions.  How do their shapes, standard deviations, means, possible values, etc. compare?  
+
+They both take values in the same set $\{0, 1, \dots, 10\}$.
+
+In terms of shape, the plain binomial is roughly symmetric (a bit left-skewed due to the relatively high $p$ value), and most of the mass is concentrated around 8-9  successes. For the beta-binomial, it is more spread out and has a more pronounced left-skewed distribution. This distribution has heavier tails towards the low and high counts.
+
+In terms of means, we have that for the binomial distribution, this is around $\mathbb{E}[X] = np = 10 \times 0.8 = 8$, while the mean for the beta-binomial would be $\mathbb{E}[X] =\frac{n\alpha}{\alpha +\beta} = \frac{10\times 4}{4+1} = 8$. Thus, both means are the same. We can confirm this by calculating
+
+```{r}
+mean(binom)
+mean(y_i)
+```
+
+Finally, in terms of the variability, we know that for the binomial distribution this will be $Var(X) = np(1-p) = 10 \times 0.8 \times 0.2 = 1.6$ while for the beta-binomial it'll have a variation of $Var(X) = \frac{n\alpha\beta(\alpha+\beta+n)}{(\alpha+\beta)^2(\alpha+\beta+1)} = \frac{10\times 4 \times 1\times15}{(5)^2 \times6} = \frac{600}{150} = 4$ which is considerably largers than the variation for the binomial distribution. We can also confirm this by calculating
+
+```{r}
+var(binom)
+var(y_i)
+```
+
     
 # Grading
 
