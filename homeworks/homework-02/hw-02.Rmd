@@ -31,14 +31,30 @@ Note that when $p=0.5$, $Var(X) = 0.25$, which is clearly the maximum. Additiona
 
 Therefore, the variance is the largest ($Var(X) = 0.25$) when $p = 0.25$, and the variance is the smallest ($Var(X) = 0$) when $p = 0 \lor p =1$.
 
-
 ## Exercise 2 
 
 How are hypergeometric and binomial random variables different? How are they similar?
 
+Similarities? They are both discrete distributions, they are both related to the success of a event with probability $p$, and both uses binomials in their probability formulas.
+
+Differences? Each of the trails in binomial are independent, while in hypergeometric they aren't (as the draws are without replacement). The formula for each is also differnet:
+
+For binomial:
+$$
+\mathbb{P}(X=k) = \binom{n}{k} p^k (1-p)^{n-k}
+$$
+For hypergeometric:
+$$
+\mathbb{P}(Y = y) = \frac{\binom{m}{y} \binom{N-m}{n-y}}{\binom{N}{n}}
+$$
+
+Additionally, they both have different expectation and variance formulas.
+
 ## Exercise 3
 
 How are exponential and Poisson random variables related?
+
+Poisson counts the number of events that occur in a fixed time interval or space. Exponential measures the time between consecutive events with a Poisson distribution. Additionally, they are both part of the same Poisson process (let's say rate is $\lambda$), in the sense that the number of events in a given time (or space) is modeled by $X\sim Poisson(\lambda)$ while the time until the first event is modeled by $T\sim Exp(\lambda)$. 
 
 ## Exercise 4 
 
