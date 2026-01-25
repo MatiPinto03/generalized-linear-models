@@ -60,9 +60,34 @@ Poisson counts the number of events that occur in a fixed time interval or space
 
 How are geometric and exponential random variables similar? How are they different?
 
+Similarities? Both are related to the first success/event. In specific, geometric measures the number of trials until the first success while the exponential one measures the time until the first event. Both are related to the Poisson process Both does not depend on time on how much time has passed, that is
+
+$$
+\mathbb{P} (X> s + t | X>s ) = \mathbb{P} (X>t)
+$$
+
+Differences? Geometric is discrete and Exponential is continuous, because Geometric measures number of trials and Exponential measures time. The pdf of both are different
+
+Geometric:
+$$
+\mathbb{P} (X = k) = (1-p)^{k-1}p
+$$
+Exponential: 
+$$
+f(t) = \lambda e^{-\lambda t}
+$$
+
 ## Exercise 5
 
 A university's college of sciences is electing a new board of 5 members. There are 35 applicants, 10 of which come from the math department. What distribution could be helpful to model the probability of electing $X$ board members from the math department?
+
+Since we are selecting $X$ different board members, once we select some, we can't selec them again. That is, this involves drawing without replacement. 
+
+With that in mind, the hypergeometric distribution would be the best one, where $N=35$ population, $K=10$ successes (i.e. math department), $n=5$ number of board members selected. In summary
+
+$$
+\mathbb{P} (X = x) = \frac{\binom{10}{x} \binom{25}{5-x}}{\binom{35}{5}}
+$$
 
 ## Exercise 6
 
