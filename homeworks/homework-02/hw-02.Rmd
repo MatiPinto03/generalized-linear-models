@@ -93,13 +93,19 @@ $$
 
 Chapter 1 asked you to consider a scenario where *"The Minnesota Pollution Control Agency is interested in using traffic volume data to generate predictions of particulate distributions as measured in counts per cubic feet."* What distribution might be useful to model this count per cubic foot? Why?
 
+Since we are truing to look the count in a limited space, we can use Poisson distribution to model the data. Poisson models the number of events in a fixed space. Since the data is independent and occurr at an approximately constant rate $\lambda$, then Poisson is ideal.
+
 ## Exercise 7
 
 Chapter 1 also asked you to consider a scenario where *"Researchers are attempting to see if socioeconomic status and parental stability are predictive of low birthweight.  They classify a low birthweight as below 2500 g, hence our response is binary: 1 for low birthweight, and 0 when the birthweight is not low."* What distribution might be useful to model if a newborn has low birthweight?
 
+Since this model is looking for an event with a binary probability (to be classified as low birthweight or not), then we can use the Bernoulli distribution. Now, if we are trying to model the sample of newborns that are classified as birthweight, then we would have to use the Binomial distribution.
+
 ## Exercise 8
 
 Chapter 1 also asked you to consider a scenario where *"Researchers are interested in how elephant age affects mating patterns among males.  In particular, do older elephants have greater mating success, and is there an optimal age for mating among males?  Data collected includes, for each elephant, age and number of matings in a given year."* Which distribution would be useful to model the number of matings in a given year for these elephants? Why?
+
+Since we are looking to count the number of mating in a specific time interval (a year), and the predictor variable, age, is continuous, we could use Poisson distribution to model this situation, and we can assume that the events would be independent from each other.
 
 ## Exercise 9
 
